@@ -1,0 +1,71 @@
+spring:
+  application:
+    name: api-geteway
+  thymeleaf:
+    cache: false
+    suffix: .html
+    encoding: utf-8
+    content-type: text/html
+    mode: LEGACYHTML5
+  redis:
+    host: 123.206.8.180
+    port: 6379
+    pool:
+      max-active: 30
+      max-idle: 10
+      min-idle: 10
+    timeout: 60
+    database: 5
+    password: 199616
+
+
+
+server:
+  port: 80
+
+
+eureka:
+  client:
+    service-url:
+     defaultZone: http://123.206.24.171:1111/eureka/
+hystrix:
+  metrics:
+    enabled: true
+
+management:
+  security:
+    enabled: false
+security:
+  user:
+    name: 1
+    password: 1
+zuul:
+  routes:
+    api-question:
+      path: /question/**
+      serviceId: question-web
+    api-resource:
+        path: /resource/**
+        serviceId: question-web
+    api-paper:
+      path: /paper/**
+      serviceId: PAPER-WEB
+    api-answer:
+      path: /answer/**
+      serviceId: PAPER-WEB
+    api-UAnswer:
+      path: /UAnswer/**
+      serviceId: PAPER-WEB
+    api-userToPaper:
+      path: /userToPaper/**
+      serviceId: PAPER-WEB
+    api-menu:
+      path: /menu/**
+      serviceId: USER-WEB
+    api-subject:
+      path: /subject/**
+      serviceId: USER-WEB
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
